@@ -135,6 +135,19 @@ rm /root/webmin_1.670_all.deb
 service webmin restart
 service vnstat restart
 
+# install squid3
+apt-get -y install squid3
+wget -O /etc/squid3/squid.conf "https://github.com/SodikHadiSaputra/Script/blob/master/squid.conf"
+sed -i $MYIP2 /etc/squid3/squid.conf;
+service squid3 restart
+
+# downlaod script
+cd
+wget -O /usr/bin/cekakun "https://github.com/SodikHadiSaputra/Script/blob/master/cekakun.sh"
+chmod +x /usr/bin/cekakun
+wget -O /usr/bin/usernew "https://github.com/SodikHadiSaputra/Script/blob/master/Usernew.sh"
+chmod +x /usr/bin/usernew
+
 # finalisasi
 chown -R www-data:www-data /home/vps/public_html
 service nginx start
@@ -145,6 +158,7 @@ service ssh restart
 service dropbear restart
 service fail2ban restart
 service webmin restart
+service squid3 restart
 
 # info
 echo "Webmin   : https://$MYIP:10000/"  | tee -a log-install.txt
@@ -153,5 +167,8 @@ echo "MRTG     : http://$MYIP/mrtg/"  | tee -a log-install.txt
 echo "Timezone : Asia/Jakarta"  | tee -a log-install.txt
 echo "Fail2Ban : [on]"  | tee -a log-install.txt
 echo "IPv6     : [off]"  | tee -a log-install.txt
-echo "Script By Aa Sodik Hadi Saputra "  | tee -a log-install.txt
+echo "=============OpenSSH port 22, 143=============="
+echo "===========DropBear port 109, 110, 443========="
+echo "============Silahkan Reboot VPS Anda==========="
+echo "========Script By Aa Sodik Hadi Saputra========"  | tee -a log-install.txt
 echo "==============================================="  
