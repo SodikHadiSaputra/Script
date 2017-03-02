@@ -18,7 +18,7 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
 # set repo
-wget -O /etc/apt/sources.list "https://raw.github.com/choirulanam217/script/master/conf/sources.list.debian7"
+wget -O /etc/apt/sources.list "https://github.com/SodikHadiSaputra/Script/blob/master/listdebian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 
@@ -61,11 +61,11 @@ echo "screenfetch" >> .profile
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.github.com/choirulanam217/script/master/conf/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://github.com/SodikHadiSaputra/Script/blob/master/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>Setup by Choirul Anam</pre>" > /home/vps/public_html/index.html
+echo "<pre>Setup By Sodik Hadi Saputra</pre>" > /home/vps/public_html/index.html
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.github.com/choirulanam217/script/master/conf/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://github.com/SodikHadiSaputra/Script/blob/master/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 service php5-fpm restart
 service nginx restart
@@ -77,8 +77,8 @@ chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 
 # install mrtg
-wget -O /etc/snmp/snmpd.conf "https://raw.github.com/choirulanam217/script/master/conf/snmpd.conf"
-wget -O /root/mrtg-mem.sh "https://raw.github.com/choirulanam217/script/master/conf/mrtg-mem.sh"
+wget -O /etc/snmp/snmpd.conf "https://github.com/SodikHadiSaputra/Script/blob/master/snmpd.conf"
+wget -O /root/mrtg-mem.sh "https://github.com/SodikHadiSaputra/Script/blob/master/mrtg-mem.sh"
 chmod +x /root/mrtg-mem.sh
 cd /etc/snmp/
 sed -i 's/TRAPDRUN=no/TRAPDRUN=yes/g' /etc/default/snmpd
@@ -86,7 +86,7 @@ service snmpd restart
 snmpwalk -v 1 -c public localhost 1.3.6.1.4.1.2021.10.1.3.1
 mkdir -p /home/vps/public_html/mrtg
 cfgmaker --zero-speed 100000000 --global 'WorkDir: /home/vps/public_html/mrtg' --output /etc/mrtg.cfg public@localhost
-curl "https://raw.github.com/choirulanam217/script/master/conf/mrtg.conf" >> /etc/mrtg.cfg
+curl "https://github.com/SodikHadiSaputra/Script/blob/master/mrtg.conf" >> /etc/mrtg.cfg
 sed -i 's/WorkDir: \/var\/www\/mrtg/# WorkDir: \/var\/www\/mrtg/g' /etc/mrtg.cfg
 sed -i 's/# Options\[_\]: growright, bits/Options\[_\]: growright/g' /etc/mrtg.cfg
 indexmaker --output=/home/vps/public_html/mrtg/index.html /etc/mrtg.cfg
