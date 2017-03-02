@@ -126,12 +126,6 @@ cd
 # install fail2ban
 apt-get -y install fail2ban;service fail2ban restart
 
-# install squid3
-apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.github.com/choirulanam217/script/master/conf/squid3.conf"
-sed -i $MYIP2 /etc/squid3/squid.conf;
-service squid3 restart
-
 # install webmin
 cd
 wget "http://prdownloads.sourceforge.net/webadmin/webmin_1.670_all.deb"
@@ -146,10 +140,18 @@ chown -R www-data:www-data /home/vps/public_html
 service nginx start
 service php-fpm start
 service vnstat restart
-service openvpn restart
 service snmpd restart
 service ssh restart
 service dropbear restart
 service fail2ban restart
-service squid3 restart
 service webmin restart
+
+# info
+echo "Webmin   : https://$MYIP:10000/"  | tee -a log-install.txt
+echo "vnstat   : http://$MYIP/vnstat/"  | tee -a log-install.txt
+echo "MRTG     : http://$MYIP/mrtg/"  | tee -a log-install.txt
+echo "Timezone : Asia/Jakarta"  | tee -a log-install.txt
+echo "Fail2Ban : [on]"  | tee -a log-install.txt
+echo "IPv6     : [off]"  | tee -a log-install.txt
+echo "Script By Aa Sodik Hadi Saputra "  | tee -a log-install.txt
+echo "==============================================="  
