@@ -1,7 +1,7 @@
 #!/bin/bash
-echo "-------------------------------"
+echo "-------------------------------------"
 echo "USERNAME          EXP DATE     "
-echo "-------------------------------"
+echo "-------------------------------------"
 while read mumetndase
 do
         AKUN="$(echo $mumetndase | cut -d: -f1)"
@@ -12,7 +12,7 @@ do
         fi
 done < /etc/passwd
 JUMLAH="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
-echo "-------------------------------"
+echo "-------------------------------------"
 echo "Jumlah akun: $JUMLAH User"
-echo "-------------------------------"
-echo "====Script By Marko Harnet====="
+echo "-------------------------------------"
+echo "====Script By Sodik Hadi Saputra====="
