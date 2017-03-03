@@ -147,7 +147,7 @@ cp ./cekakun.sh /usr/bin/cekakun
 wget "https://fs08n1.sendspace.com/dl/ce509844f21202b822673eb9c20c4e40/58b8dd5a67b9cd36/sl1115/usernew.sh"
 cp ./usernew.sh /usr/bin/usernew
 chmod +x /usr/bin/usernew
-chmod +x /usr/bin/nano
+chmod +x /usr/bin/cekakun
 rm ./usernew.sh
 rm ./cekakun.sh
 
