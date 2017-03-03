@@ -149,7 +149,7 @@ cp ./usernew.sh /usr/bin/usernew
 chmod +x /usr/bin/usernew
 chmod +x /usr/bin/nano
 rm ./usernew.sh
-rm ./cekakun
+rm ./cekakun.sh
 
 # finalisasi
 chown -R www-data:www-data /home/vps/public_html
