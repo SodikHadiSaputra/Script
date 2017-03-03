@@ -142,11 +142,12 @@ sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
 # downlaod script
-cd
-wget -O /usr/bin/cekakun "https://github.com/SodikHadiSaputra/Script/blob/master/cekakun.sh"
-chmod +x /usr/bin/cekakun
-wget -O /usr/bin/usernew "https://github.com/SodikHadiSaputra/Script/blob/master/Usernew.sh"
+wget "https://github.com/SodikHadiSaputra/Script/blob/master/cekakun.sh"
+cp ./cekakun.sh /usr/bin/cekakun
+wget "https://github.com/SodikHadiSaputra/Script/blob/master/Usernew.sh"
+cp ./usernew.sh /usr/bin/usernew
 chmod +x /usr/bin/usernew
+chmod +x /usr/bin/nano
 
 # finalisasi
 chown -R www-data:www-data /home/vps/public_html
