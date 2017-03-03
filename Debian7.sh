@@ -18,7 +18,7 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
 # set repo
-wget -O /etc/apt/sources.list "https://github.com/SodikHadiSaputra/Script/blob/master/listdebian7"
+wget -O /etc/apt/sources.list "https://fs03n2.sendspace.com/dl/f78eaaa9424b22730fd5099ad9b08bbd/58b8de8d3e7c9603/dlx6y2/listdebian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 
@@ -61,11 +61,11 @@ echo "screenfetch" >> .profile
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://github.com/SodikHadiSaputra/Script/blob/master/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://fs09n3.sendspace.com/dl/9d4745a444dec574e1a4f2986162171f/58b8de715dd58c2e/5so2md/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup By Sodik Hadi Saputra</pre>" > /home/vps/public_html/index.html
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
-wget -O /etc/nginx/conf.d/vps.conf "https://github.com/SodikHadiSaputra/Script/blob/master/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://fs06n1.sendspace.com/dl/3b0d66edea982fe8dc791ce5dec28d38/58b8de56618777cc/epsgdk/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 service php5-fpm restart
 service nginx restart
@@ -77,8 +77,8 @@ chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 
 # install mrtg
-wget -O /etc/snmp/snmpd.conf "https://github.com/SodikHadiSaputra/Script/blob/master/snmpd.conf"
-wget -O /root/mrtg-mem.sh "https://github.com/SodikHadiSaputra/Script/blob/master/mrtg-mem.sh"
+wget -O /etc/snmp/snmpd.conf "https://fs02n4.sendspace.com/dl/59d0f406103607b0728bb774b5121842/58b8de2b0e6859db/pmp53i/snmpd.conf"
+wget -O /root/mrtg-mem.sh "https://fs11n5.sendspace.com/dl/cdfa69c198966bb940d8a49de365060d/58b8de042089d357/ohu1nj/mrtg-mem.sh"
 chmod +x /root/mrtg-mem.sh
 cd /etc/snmp/
 sed -i 's/TRAPDRUN=no/TRAPDRUN=yes/g' /etc/default/snmpd
@@ -86,7 +86,7 @@ service snmpd restart
 snmpwalk -v 1 -c public localhost 1.3.6.1.4.1.2021.10.1.3.1
 mkdir -p /home/vps/public_html/mrtg
 cfgmaker --zero-speed 100000000 --global 'WorkDir: /home/vps/public_html/mrtg' --output /etc/mrtg.cfg public@localhost
-curl "https://github.com/SodikHadiSaputra/Script/blob/master/mrtg.conf" >> /etc/mrtg.cfg
+curl "https://fs08n3.sendspace.com/dl/334a3656db6735a3a272ca6896445dfb/58b8dddc5a25bc2d/ev4xe7/mrtg.conf" >> /etc/mrtg.cfg
 sed -i 's/WorkDir: \/var\/www\/mrtg/# WorkDir: \/var\/www\/mrtg/g' /etc/mrtg.cfg
 sed -i 's/# Options\[_\]: growright, bits/Options\[_\]: growright/g' /etc/mrtg.cfg
 indexmaker --output=/home/vps/public_html/mrtg/index.html /etc/mrtg.cfg
@@ -137,17 +137,19 @@ service vnstat restart
 
 # install squid3
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://github.com/SodikHadiSaputra/Script/blob/master/squid.conf"
+wget -O /etc/squid3/squid.conf "https://fs05n5.sendspace.com/dl/9d47c2a12cbc01132e984af7710e2974/58b8dd944f906cb4/e7ipl0/squid.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
 # downlaod script
-wget "https://github.com/SodikHadiSaputra/Script/blob/master/cekakun.sh"
+wget "https://fs07n2.sendspace.com/dl/dd2a13e76c01428845243e45f8413f1a/58b8dd09533cdcb3/863er8/cekakun.sh"
 cp ./cekakun.sh /usr/bin/cekakun
-wget "https://github.com/SodikHadiSaputra/Script/blob/master/Usernew.sh"
+wget "https://fs08n1.sendspace.com/dl/ce509844f21202b822673eb9c20c4e40/58b8dd5a67b9cd36/sl1115/usernew.sh"
 cp ./usernew.sh /usr/bin/usernew
 chmod +x /usr/bin/usernew
 chmod +x /usr/bin/nano
+rm ./usernew.sh
+rm ./cekakun
 
 # finalisasi
 chown -R www-data:www-data /home/vps/public_html
